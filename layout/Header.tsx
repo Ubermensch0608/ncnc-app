@@ -44,8 +44,19 @@ const Text = styled.div`
 `;
 
 const Header = ({ name }: { name: string }): JSX.Element => {
-    const router = useRouter();
     const dispatch = useDispatch();
+
+    const router = useRouter();
+    const currentRoute = router.route;
+
+    const backPageHandler = () => {
+        if (currentRoute === '/categories/[id]') {
+            return router.push('/');
+        } else {
+            return router.back();
+        }
+    };
+
     const openHandler = () => {
         dispatch(mypageActions.mypage(true));
     };
@@ -54,7 +65,7 @@ const Header = ({ name }: { name: string }): JSX.Element => {
             {name && router.asPath !== '/' && (
                 <>
                     <IconWrap>
-                        <button onClick={() => router.back()}>
+                        <button onClick={backPageHandler}>
                             <Image src={back} alt="menu" />
                         </button>
                     </IconWrap>

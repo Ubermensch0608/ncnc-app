@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 export const TitleDiv = styled.div`
     display: flex;
     width: 100%;
-    padding-left: 20px;
     margin: 14px 0;
 `;
 

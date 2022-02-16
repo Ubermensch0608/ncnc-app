@@ -10,7 +10,6 @@ const BrandId = () => {
     const router = useRouter();
     const id = Number(router.query.brandId);
 
-    console.log(id);
     const [category, setCategory] = useState<ConItems[]>([]);
 
     useEffect(() => {
@@ -19,6 +18,7 @@ const BrandId = () => {
                 const fetchUrl = `con-category2s/${id}`;
                 const { conCategory2 } = await fetcher(fetchUrl);
                 const { conCategory1Id } = conCategory2;
+
                 const fetchUrl2 = `con-category1s/${conCategory1Id}/nested`;
                 const { conCategory1 } = await fetcher(fetchUrl2);
                 const { conCategory2s } = conCategory1;
